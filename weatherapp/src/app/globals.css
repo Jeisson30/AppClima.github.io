@@ -1,0 +1,44 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+ */
+.tarjet {
+  background-color: "orange";
+  padding: "1.5rem";
+  border-Radius: "1rem";
+  box-Shadow: "0 4px 8px rgba(0, 0, 0, 0.1)";
+  display: "flex";
+  flex-Direction: "column";
+  align-Items: "center";
+  justify-Content: "center";
+  margin-Top: "2rem";
+  max-Width: "600px";
+}
+
+p {
+  margin-bottom: 0.2rem;
+}
