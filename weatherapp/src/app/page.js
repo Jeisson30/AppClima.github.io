@@ -12,6 +12,8 @@ export default function Home() {
   const [weather, setWeather] = useState({})
   const [loading, setLoading] = useState(false)
   const [favorites, setFavorites] = useState([])
+  const [forecast, setForecast] = useState([]);
+
 
   const apiKey = process.env.NEXT_PUBLIC_OPENWEATHERMAP_API_KEY
 
@@ -24,6 +26,8 @@ export default function Home() {
 
   const handleClearFavorites = () => {
     localStorage.removeItem('favorites');
+    setWeather({});
+    setForecast([]);
     setFavorites([]);
   };
     
@@ -41,6 +45,7 @@ export default function Home() {
         setFavorites([...favorites, res.data])
         localStorage.setItem('favorites ', JSON.stringify([...favorites, res.data]))
       }
+      fetchForecast()
     })
     .catch(error => {
       alert('Error en la consulta')
@@ -48,6 +53,19 @@ export default function Home() {
     setCity('')
     setLoading(false)
   }
+
+  const fetchForecast = () => {
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`;
+    axios.get(url)
+    .then((res) => {
+      const forecastData = res.data.list.filter((data, index) => index % 8 === 0);
+      setForecast(forecastData);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  };
+  
 
   if (loading) {
     return <Spinner />
@@ -83,7 +101,35 @@ export default function Home() {
           </div>
         </div>
         <Favorites favorites={favorites} setWeather={setWeather} />
-        <button className='myButton' onClick={handleClearFavorites}>Clear Favorites</button>        
+
+        {forecast && forecast.length > 0 && (
+          <div style={{ marginTop: "2rem" }}>
+            <h3 style={{ marginBottom: "1rem" }}>Pronóstico para los próximos 5 días</h3>
+            <table className='table'>
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Descripción</th>
+                  <th>Temperatura (°C)</th>
+                  <th>Humedad (%)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {forecast.map((data) => (
+                  <tr key={data.dt}>
+                    <td>{new Date(data.dt * 1000).toLocaleDateString()}</td>
+                    <td>{data.weather && data.weather[0] && <img src={`http://openweathermap.org/img/wn/${data.weather[0].icon}.png`} alt={data.weather[0].description} />} {data.weather && data.weather[0] && data.weather[0].description}</td>
+                    <td>{data.main && Math.round((data.main.temp - 32) * 5/9)}</td>
+                    <td>{data.main && data.main.humidity}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+        <div className='containerButton'>
+          <button className='myButton' onClick={handleClearFavorites}>Clear Favorites</button>        
+        </div>
       </main>
     )
   }

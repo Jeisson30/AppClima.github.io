@@ -4,7 +4,8 @@
  */
 .body {
   background-color: #408c99;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
   padding: 5px;
 }
 
@@ -68,4 +69,24 @@ p {
 .myButton:active {
   position: relative;
   top: 1px;
+}
+
+.table {
+  border: 1px solid black;
+  border-collapse: collaps;
+  background: linear-gradient(90deg, hsla(235, 70%, 67%, 1) 0%, hsla(206, 56%, 58%, 1) 50%, hsla(256, 51%, 84%, 1) 100%);
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 0.5rem
+}
+
+.containerButton {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
 }
