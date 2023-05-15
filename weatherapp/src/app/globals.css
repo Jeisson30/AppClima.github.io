@@ -1,44 +1,71 @@
 /* @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
  */
+.body {
+  background-color: #408c99;
+  height: 100vh;
+  padding: 5px;
+}
+
 .tarjet {
-  background-color: "orange";
-  padding: "1.5rem";
-  border-Radius: "1rem";
-  box-Shadow: "0 4px 8px rgba(0, 0, 0, 0.1)";
   display: "flex";
-  flex-Direction: "column";
-  align-Items: "center";
-  justify-Content: "center";
-  margin-Top: "2rem";
-  max-Width: "600px";
+  background-color: "#f2f2f2";
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  max-width: 400px;
+  margin: 0 auto;
+  background: linear-gradient(90deg, hsla(235, 70%, 67%, 1) 0%, hsla(206, 56%, 58%, 1) 50%, hsla(256, 51%, 84%, 1) 100%);
 }
 
 p {
   margin-bottom: 0.2rem;
+}
+
+.input {
+  padding: 9px;
+  font-size: 15px;
+  border-width: 1px;
+  border-color: #CCCCCC;
+  background-color: #FFFFFF;
+  color: #000000;
+  border-style: solid;
+  border-radius: 15px;
+  box-shadow: 0px 0px 5px rgba(60, 191, 88, .53);
+  text-shadow: -37px 0px 5px rgba(66, 66, 66, .75);
+}
+
+.input:focus {
+  outline: none;
+}
+
+.myButton {
+  box-shadow: 0px 10px 14px -7px #276873;
+  background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+  background-color: #599bb3;
+  border-radius: 15px;
+  display: inline-block;
+  cursor: pointer;
+  color: #f4efef;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 7px 12px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #3d768a;
+}
+
+.myButton:hover {
+  background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+  background-color: #408c99;
+}
+
+.myButton:active {
+  position: relative;
+  top: 1px;
 }
